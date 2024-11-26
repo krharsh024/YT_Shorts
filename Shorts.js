@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo, useCallback } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   View,
   Text,
@@ -30,7 +30,6 @@ const Shorts = () => {
           if (index === newIndex) {
             await video.playAsync(); 
           } else {
-            // await video.unloadAsync();
             await video.pauseAsync(); 
           }
         }
@@ -73,11 +72,11 @@ console.log("Component rendered")
                 style={styles.shortVideo}
               />
               <Video
-              ref={(ref) => (videoRefs.current[index] = ref)} // Assign ref to the current video
+              ref={(ref) => (videoRefs.current[index] = ref)} 
                 style={styles.Video}
                 resizeMode="cover"
-                shouldPlay={activeIndex === index} // Only play the active video
-                isMuted={activeIndex !== index} // Mute inactive videos
+                shouldPlay={activeIndex === index} 
+                isMuted={activeIndex !== index} 
                 source={item}
                 isLooping
               />
